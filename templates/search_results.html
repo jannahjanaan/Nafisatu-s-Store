@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3>Search Results for "{{ query }}"</h3>
+    {% if results %}
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+            {% for product in results %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" style="height: 120px; object-fit: cover;" alt="{{ product.name }}">
+                    <div class="card-body p-2">
+                        <h6 class="card-title mb-1">{{ product.name }}</h6>
+                        <p class="card-text mb-1">{{ product.description }}</p>
+                        <p class="card-text text-success mb-2">₦{{ product.price }}</p>
+                        <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-danger mt-3">No products matched your search for "<strong>{{ query }}</strong>".</p>
+    {% endif %}
+</div>
+{% endblock %}

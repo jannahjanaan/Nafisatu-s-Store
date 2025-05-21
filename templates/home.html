@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Nafisatu's Fation Store</h2>
+<div class="row">
+  {% for product in shoes %}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text"><strong>₦{{ product.price }}</strong></p>
+          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<h2 class="mt-5">Fabrics</h2>
+<div class="row">
+  {% for product in fabrics %}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text"><strong>₦{{ product.price }}</strong></p>
+          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

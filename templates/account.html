@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}My Account - Nafisatu Store{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Welcome to Your Account</h2>
+    <p>You are signed in as <strong>{{ session.get('user') }}</strong>.</p>
+    <a href="{{ url_for('signout') }}" class="btn btn-danger mt-3">Sign Out</a>
+</div>
+{% endblock %}
