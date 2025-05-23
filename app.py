@@ -79,7 +79,6 @@ def cart():
 
     return render_template('cart.html', cart_items=cart_items, total=total)
 
-
 @app.route('/process_payment', methods=['POST'])
 def process_payment():
     card_name = request.form.get('card_name')
@@ -191,9 +190,10 @@ def orders():
 def help():
     return render_template('help.html')
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
-from flask import Flask
-app = Flask(__name__)
+
 
 
 
