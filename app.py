@@ -115,7 +115,7 @@ def help_page():
     return render_template('help.html')
 
 # Category Page
-@app.route('/category/<category>')
+@app.route('/category/<category>') 
 def category_page(category):
     matched = [p for p in products if p['category'].lower() == category.lower()]
     if not matched:

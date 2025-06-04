@@ -1,41 +1,48 @@
 {% extends "base.html" %}
+{% block title %}Store - Home{% endblock %}
+
 {% block content %}
+<h4>Nafisatu's Store</h4>
 
-<h2>Well Come to Nafisatu's Fation Store</h2>
+<!-- Shoes Section -->
+<div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+  <h3>Shoes</h3>
+  <a href="{{ url_for('category_page', category='shoes') }}" class="btn btn-sm btn-outline-primary">See All Shoes</a>
+</div>
 <div class="row">
-  {% for product in shoes %}
+  {% for product in shoes[:4] %}
     <div class="col-md-3 mb-4">
-      <div class="card h-100">
-        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}" style="height: 220px; object-fit: contain;">
+        <div class="card-body text-center">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{ product.description }}</p>
-          <p class="card-text"><strong>₦{{ product.price }}</strong></p>
-          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+          <p class="card-text text-danger"><strong>₦{{ product.price }}</strong></p>
+          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-outline-primary btn-sm">Add to Cart</a>
         </div>
       </div>
     </div>
   {% endfor %}
 </div>
 
-<h2 class="mt-5">Fabrics</h2>
+<!-- Fabrics Section -->
+<div class="d-flex justify-content-between align-items-center mt-5 mb-2">
+  <h3>Fabrics</h3>
+  <a href="{{ url_for('category_page', category='fabrics') }}" class="btn btn-sm btn-outline-primary">See All Fabrics</a>
+</div>
 <div class="row">
-  {% for product in fabrics %}
+  {% for product in fabrics[:4] %}
     <div class="col-md-3 mb-4">
-      <div class="card h-100">
-        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="card-img-top" alt="{{ product.name }}" style="height: 220px; object-fit: contain;">
+        <div class="card-body text-center">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{ product.description }}</p>
-          <p class="card-text"><strong>₦{{ product.price }}</strong></p>
-          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+          <p class="card-text text-danger"><strong>₦{{ product.price }}</strong></p>
+          <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-outline-primary btn-sm">Add to Cart</a>
         </div>
       </div>
     </div>
   {% endfor %}
 </div>
-
 {% endblock %}
-
-
-
